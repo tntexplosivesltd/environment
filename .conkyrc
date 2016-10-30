@@ -1,0 +1,126 @@
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+alignment top_right
+background no
+border_width 1
+cpu_avg_samples 2
+default_color white
+default_outline_color white
+default_shade_color white
+double_buffer yes
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont DejaVu Sans Mono:size=10
+gap_x 4690
+gap_y 30
+minimum_size 400 900
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+own_window yes
+own_window_transparent yes
+own_window_class Conky
+own_window_type dock
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+stippled_borders 0
+update_interval 1.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+# colours
+default_color CCCCCC
+color1 009900       # Green
+color2 CC9900       # Orange
+color3 336699       # Blue
+color4 FF3333       # Red
+color5 FF6666       # Light red
+color6 00CCFF       # Light blue
+color7 FFFF00       # Yellow
+#templates
+template0 ${cpugraph \1 70,100 009900 009900}
+template1 ${fs_bar 15 \1}${goto 80}$color${fs_used \1}/${fs_size \1}$alignr${fs_used_perc \1}%
+template2 ${top name \1} ${top pid \1} ${top cpu \1}  ${top mem_res \1}
+template3 ${top_mem name \1} ${top_mem pid \1} ${top_mem cpu \1}  ${top_mem mem_res \1}
+
+TEXT
+${color1}System
+${voffset -10}${color1}${hr}
+#${cpugauge cpu1 50,100} ${cpugauge cpu2 50,100} ${cpugauge cpu3 50,100} ${cpugauge cpu4 50,100}
+${color 333333}${template0 cpu1} ${template0 cpu2} ${template0 cpu3} ${template0 cpu4}
+${voffset -50}$color${goto 45}${cpu cpu1}%${goto 155}${cpu cpu2}%${goto 265}${cpu cpu3}%${goto 375}${cpu cpu4}%
+
+#RAM stuff
+${voffset 30}${color1}RAM:     ${membar 15}${goto 80}$color$mem/$memmax$alignr$memperc%
+${color1}Swap:    ${swapbar 15}${goto 80}$color$swap/$swapmax$alignr$swapperc%
+
+#filesystems
+${color2}Free space
+${voffset -10}${color2}${hr}
+${color2}/        ${template1 /}
+${color2}/home/   ${template1 /home}
+${color2}docker/  ${template1 /var/lib/docker}
+${color2}exports  ${template1 /exports}
+
+#IP address etc
+${color3}Networking
+${voffset -10}${color3}${hr}
+${color 333333}${upspeedgraph eth0 50,200 336699 336699}${goto 225}${downspeedgraph eth0 50,200 336699 336699}${goto 10}${voffset 25}${color}Up: $color${upspeedf eth0}kB/s${color}${goto 230}Down: ${voffset -50}${downspeedf eth0}kB/s
+${voffset 25}${color3}IP: ${color}${addr eth0}${goto 165}${color3}Gateway: ${color}${gw_ip eth0}
+${color3}External IP: $color${execi 300 wget http://ipinfo.io/ip -qO -}
+
+# Top CPU usage
+${color4}Top 5 CPU%          PID   CPU%  MEM_RES
+${voffset -10}${color4}${hr}
+${color} ${template2 1}
+${color} ${template2 2}
+${color} ${template2 3}
+${color} ${template2 4}
+${color} ${template2 5}
+
+# Top memory usage
+${color5}Top 5 MEM%          PID   CPU%  MEM_RES
+${voffset -10}${color5}${hr}
+${color} ${template3 1}
+${color} ${template3 2}
+${color} ${template3 3}
+${color} ${template3 4}
+${color} ${template3 5}
+
+# Calendar
+${color6}Calendar
+${voffset -10}${color6}${hr}
+$color${execpi 3600 DJS=`date +%_d`; cal -h | sed s/"\(^\|[^0-9]\)$DJS"'\b'/'\1${font DejaVu Sans Mono:style=bold,size=10}${color6}'"$DJS"'${font}$color'/}
+
+# weather
+${color7}Weather
+${voffset -10}${color7}${hr}
+$color${execi 300 ~/weather.sh "Albany,Auckland" | sed -n 's/\(.*\): \([0-9][0-9]*\).*/\1, \2°C/p'}

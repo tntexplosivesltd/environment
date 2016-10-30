@@ -1,4 +1,2 @@
 # environment
 
-## Pre-requisites
-* ctags
