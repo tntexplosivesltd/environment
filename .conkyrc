@@ -26,7 +26,7 @@
 alignment top_right
 background no
 border_width 1
-cpu_avg_samples 2
+cpu_avg_samples 3
 default_color white
 default_outline_color white
 default_shade_color white
@@ -37,10 +37,10 @@ draw_outline no
 draw_shades no
 use_xft yes
 xftfont DejaVu Sans Mono:size=10
-gap_x 4690
+gap_x 2120
 gap_y 30
 minimum_size 400 900
-net_avg_samples 2
+net_avg_samples 3
 no_buffers yes
 out_to_console no
 out_to_stderr no
