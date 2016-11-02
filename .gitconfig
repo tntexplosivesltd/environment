@@ -1,0 +1,26 @@
+[user]
+	name = NAME
+	email = EMAIL
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    rb = pull --rebase
+    lg = log --graph --pretty=format:'%C(yellow)%h%Creset - %C(green)%an%C(blue)%d%Creset%n %s'
+    su = submodule update
+    si = submodule init
+    ss = submodule summary
+    fe = submodule foreach git
+    ps = push --recurse-submodules=check
+    who = shortlog -sn
+	permission-reset = !git diff -p -R | grep -E \"^(diff|(old|new) mode)\" | git apply
+[push]
+	default = current
+[core]
+	excludesfile = EXCLUDES_FILE
+[branch "*"]
+	rebase = true
+[color]
+	ui = auto
