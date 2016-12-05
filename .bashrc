@@ -84,6 +84,13 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --exclude=cscope.* --color=auto -I'
 fi
 
+#####################################################################################
+### The --clear option makes sure intruders cannot use your existing SSH-Agents keys
+### i.e. Only allow cron jobs to use password-less login
+#####################################################################################
+/usr/bin/keychain $HOME/.ssh/id_rsa
+source $HOME/.keychain/$HOSTNAME-sh
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
