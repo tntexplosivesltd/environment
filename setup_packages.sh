@@ -10,12 +10,18 @@ sudo apt-get install -y apcalc\
                         ctags\
                         curl\
                         dwm\
+                        gcc\
                         git\
                         gitk\
                         google-chrome-stable\
                         libpango1.0-dev\
+                        libx11-dev\
                         libxft-dev\
-                        libxinerama-dev
+                        libxi-dev\
+                        libxinerama-dev\
+                        libxtst-dev\
+                        make\
+                        pkg-config\
                         qt5-default\
                         tmux\
                         vim
