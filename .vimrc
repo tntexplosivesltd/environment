@@ -11,14 +11,14 @@ set background=dark
 let g:solarized_termcolors = 256 " gives us the dark background (#1c1c1c)
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
+let g:showmarks_marks = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+nnoremap K :Man <cword><CR>
 colorscheme solarized
 
 set diffopt+=iwhite
 set omnifunc=syntaxcomplete#Complete
 set filetype=c
 let c_space_errors = 1
-let g:showmarks_marks = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-nnoremap K :Man <cword><CR>
 
 filetype plugin on
 "au BufNewFile,BufRead *.c autocmd BufWritePre * :%s/\s\+$//e
@@ -26,21 +26,31 @@ filetype plugin on
 "au BufNewFile,BufRead *.py autocmd BufWritePre * :%s/\s\+$//e
 highligh ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
-map <C-o> :TlistToggle<CR>
-
 set tags=tags;
 
-function Addr2Line()
-    let address = expand("<cword>")
-    let codeline = system("mips-csr3.0-addr2line -e ISS.exe ", address)
-    let codeline = substitute(codeline, '\n\+$', '', '')
-    if codeline != "??:0"
-        let codeline = substitute(codeline, '.*main/iss/', '', '')
-        exe '%s#' . address . '#' . codeline . '#g'
-    else
-        echoerr "No line found for address " . address
-    endif
-endfunction
+map <C-o> :TlistToggle<CR>
+
+"disable arrow keys
+noremap <up> <NOP>
+noremap <down> <NOP>
+noremap <left> <NOP>
+noremap <right> <NOP>
+inoremap <up> <NOP>
+inoremap <down> <NOP>
+inoremap <left> <NOP>
+inoremap <right> <NOP>
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+let python_highlight_all = 1
 
 function! LoadCscope()
   let db = findfile("cscope.out", ".;")
@@ -49,7 +59,8 @@ function! LoadCscope()
     exe "cs add " . db . " " . path
   endif
 endfunction
-call LoadCscope()
+"call LoadCscope()
+
 
 if filereadable(".local_vimrc")
     source .local_vimrc
