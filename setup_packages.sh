@@ -14,6 +14,7 @@ sudo apt-get install -y apcalc\
                         git\
                         gitk\
                         google-chrome-stable\
+                        kdiff3\
                         libpango1.0-dev\
                         libx11-dev\
                         libxft-dev\
