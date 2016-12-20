@@ -1,6 +1,7 @@
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set autoindent
 set incsearch
+set hlsearch
 set nu
 set list
 set listchars=tab:\|\

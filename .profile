@@ -20,5 +20,8 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+xset r rate 500 60 # Keyboard repeat delay and rate
 setxkbmap -option 'caps:ctrl_modifier'
+setxkbmap -option 'altwin:alt_win'
 xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+xmodmap ~/.xmodmap
