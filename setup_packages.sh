@@ -7,7 +7,7 @@ sudo apt-get install -y apcalc\
                         ctags\
                         curl\
                         dwm\
-                        firefox-esr\
+                        feh\
                         gcc\
                         git\
                         gitk\
@@ -21,6 +21,6 @@ sudo apt-get install -y apcalc\
                         libxtst-dev\
                         make\
                         pkg-config\
-                        qt5-default\
+                        rxvt-unicode-256color\
                         tmux\
                         vim

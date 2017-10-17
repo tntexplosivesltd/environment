@@ -1,0 +1,46 @@
+*foreground: white
+*background: #1C1C1C
+URxvt.scrollBar: false
+URxvt*font: xft:Monospace:size=9:hinting=hintfull:antialias=true
+URxvt.letterSpace: -1
+URxvt.perl-ext-common: default,matcher,clipboard,font-size
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt.keysym.Control-Shift-C: perl:clipboard:copy
+URxvt.keysym.Control-Shift-V: perl:clipboard:paste
+URxvt*termName: rxvt-256color
+URxvt*saveLines: 65535
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
+URxvt.font-size.step: 2
+
+!black
+*color0:  #000000
+*color8:  #555555
+!red
+*color1:  #AA0000
+*color9:  #FF5555
+!green
+*color2:  #00AA00
+*color10: #55FF55
+!yellow
+*color3:  #AA5500
+*color11: #FFFF55
+!blue
+*color4:  #3333AA
+*color12: #6666FF
+!magenta
+*color5:  #AA00AA
+*color13: #FF55FF
+!cyan
+*color6:  #00AAAA
+*color14: #55FFFF
+!white
+*color7:  #AAAAAA
+*color15: #FFFFFF
+!cursor
+*cursorColor: #00AA00

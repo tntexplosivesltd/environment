@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/thomasphillips/dev/vue-backend-tats/tats-vue-env/include/site/python2.7'
+let g:netrw_dirhist_2='/home/thomasphillips/dev/vue-backend-tats/tats-vue-env'
+let g:netrw_dirhist_3='/home/thomasphillips/dev/vue-backend-tats/tats-vue-env/lib'
+let g:netrw_dirhist_4='/home/thomasphillips/dev/vue-backend-tats/tats-vue-env/lib/python2.7'
+let g:netrw_dirhist_5='/home/thomasphillips/dev/vue-backend-tats/tats-vue-env'
+let g:netrw_dirhist_6='/home/thomasphillips/dev/vue-backend-tats/tats-vue-env/include'
+let g:netrw_dirhist_7='/home/thomasphillips/dev/vue-backend-tats/tats-vue-env/include/python2.7'
+let g:netrw_dirhist_8='/home/thomasphillips/dev/ambausb'
+let g:netrw_dirhist_9='/home/thomasphillips/dev/skyd-tats/prod_tests/serial_protocol_tests'
