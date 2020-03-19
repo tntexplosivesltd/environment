@@ -12,7 +12,7 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+    . "$HOME/.bashrc"
     fi
 fi
 
@@ -20,8 +20,14 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+export EDITOR=vim
 xset r rate 500 60 # Keyboard repeat delay and rate
-setxkbmap -option 'caps:ctrl_modifier'
-setxkbmap -option 'altwin:alt_win'
-xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+#setxkbmap -option 'caps:ctrl_modifier'
+#setxkbmap -option 'altwin:alt_win'
+#ps aux | grep xcape | grep -v grep > /dev/null 2>&1
+#if [ $? -ne 0 ]; then
+#    xcape -e 'Caps_Lock=Escape;Control_L=Escape;Control_R=Escape'
+#fi
 xmodmap ~/.xmodmap
+export MAKEFLAGS=-j$(nproc --all)
+export PATH=$PATH:/usr/local/armv7a-cros-linux-gnueabihf-2018.04.12.144229/bin/:/usr/local/linaro-armv7ahf-2017.02-gcc6.3/bin

@@ -74,27 +74,30 @@ alias sudo='sudo '
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='ls -N --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
     # Don't search in binary files for matches
-    alias grep='grep --exclude=cscope.* --color=auto -I'
-    alias fgrep='fgrep --exclude=cscope.* --color=auto -I'
-    alias egrep='egrep --exclude=cscope.* --color=auto -I'
+    alias grep='grep --color=auto -I'
+    alias fgrep='fgrep --color=auto -I'
+    alias egrep='egrep --color=auto -I'
 fi
+
+/usr/bin/keychain -q $HOME/.ssh/*_rsa
+/usr/bin/keychain -q $HOME/.ssh/teknique*.pem
+/usr/bin/keychain -q $HOME/.ssh/jenkins*.pem
+source $HOME/.keychain/$HOSTNAME-sh
 
 #####################################################################################
 ### The --clear option makes sure intruders cannot use your existing SSH-Agents keys
 ### i.e. Only allow cron jobs to use password-less login
 #####################################################################################
-/usr/bin/keychain $HOME/.ssh/id_rsa
-source $HOME/.keychain/$HOSTNAME-sh
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='ls -alFN'
+alias la='ls -AN'
+alias l='ls -CFN'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -122,7 +125,6 @@ alias ..='cd ..'
 
 #tools
 alias quit='exit'           # quit == exit
-alias tmux='TERM=xterm-256color tmux'
+alias tmux='TERM=rxvt-256color tmux'
 
 alias 10big='du -hsx * | sort -rh | head -10'
-export PYTHONPATH=$PYTHONPATH:/home/thomasphillips/.local/lib/python2.7/site-packages
